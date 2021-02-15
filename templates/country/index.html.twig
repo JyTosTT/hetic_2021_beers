@@ -1,21 +1,18 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}{{ category.name }}{% endblock %}
+{% block title %}{{ country.name }}{% endblock %}
 
 {% block body %}
+  <div class="example-wrapper">
+    <h1>{{ country.name }}</h1>
 
-  <section class="categories">
-    <h1>{{ category.name }}</h1>
-
-    {% for beer in category.beers %}
+    {% for beer in country.beers %}
       <li>
         <a href="{{ path('beer:focus', { 'id' : beer.id }) }}">
           {{ beer.name }}
         </a>
-
       </li>
-
     {% endfor %}
 
-  </section>
+  </div>
 {% endblock %}
