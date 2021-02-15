@@ -3,6 +3,7 @@
 namespace App\Controller;
 
 use App\Repository\BeerRepository;
+use App\Repository\CategoryRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
@@ -25,12 +26,15 @@ class BeerController extends AbstractController
      * @Route("/beer/{id}", name="beer:focus")
      * @param int $id
      * @param BeerRepository $beerRepository
+     * @param CategoryRepository $categoryRepository
      * @return Response
      */
-    public function beerFocus(int $id, BeerRepository $beerRepository): Response
+    public function beerFocus(int $id, BeerRepository $beerRepository, CategoryRepository $categoryRepository): Response
     {
         return $this->render('beer/beerFocus/index.html.twig', [
-            'beer' => $beerRepository->find($id)
+            'beer' => $beerRepository->find($id),
+            'categoriesSpecials' => $categoryRepository->findCategoriesByTermAndBeer($id, 'special'),
+            'categoriesNormals' => $categoryRepository->findCategoriesByTermAndBeer($id)
         ]);
     }
 }
