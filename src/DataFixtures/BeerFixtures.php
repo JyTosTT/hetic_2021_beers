@@ -5,6 +5,7 @@ namespace App\DataFixtures;
 use Doctrine\Persistence\ObjectManager;
 use Doctrine\Common\DataFixtures\DependentFixtureInterface;
 use App\Entity\Beer;
+use App\Entity\Category;
 use App\Entity\Country;
 
 class BeerFixtures extends BaseFixture implements DependentFixtureInterface
@@ -36,6 +37,9 @@ class BeerFixtures extends BaseFixture implements DependentFixtureInterface
       $beer->setCountry($this->getRandomReference(Country::class));
 
       $beer->setDegree($this->faker->randomFloat(1, 3.4, 10.7));
+
+      // add a normal category
+      $beer->addCategory($this->getRandomReference(Category::class));
     });
 
     $manager->flush();
