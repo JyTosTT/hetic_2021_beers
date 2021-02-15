@@ -43,6 +43,6 @@ class BeerFixtures extends BaseFixture implements DependentFixtureInterface
 
   public function getDependencies()
   {
-    return [CountryFixtures::class];
+    return [CountryFixtures::class, CategoryFixtures::class];
   }
 }
