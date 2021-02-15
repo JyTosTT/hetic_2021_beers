@@ -1,8 +1,14 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Hello BeerController!{% endblock %}
+{% block title %}{{ beer.name }}{% endblock %}
 
 {% block body %}
+
+  {{render(controller('App\\Controller\\BarController:mainMenu',
+    {
+      'routeName' : app.request.attributes.get('_route'),
+      'category_id' : app.request.attributes.get('id') ?? ''
+    }))}}
 
   <section class="beer__focus">
 
@@ -16,7 +22,6 @@
         <li>{{ category.name }}</li>
       {% endfor %}
     </ul>
-
 
   </section>
 {% endblock %}
