@@ -16,21 +16,24 @@ class CategoryFixtures extends BaseFixture
   {
 
     foreach (self::$normalCategories as $key => $normalCategory) {
-      $category = new Category();
-      $this->setCategoryData($category, $normalCategory, "normal");
-      $manager->persist($category);
-      // store for usage later as App\Entity\ClassName_#COUNT#
-      $this->addReference(Category::class . '_' . "normal$key", $category);
+      $this->createOne(
+        Category::class,
+        function (Category $category) use ($normalCategory) {
+          $this->setCategoryData($category, $normalCategory, "normal");
+        },
+        "normal$key"
+      );
     }
 
     foreach (self::$specialCategories as $key => $specialCategory) {
-      $category = new Category();
-      $this->setCategoryData($category, $specialCategory, "special");
-      $manager->persist($category);
-      // store for usage later as App\Entity\ClassName_#COUNT#
-      $this->addReference(Category::class . '_' . "special$key", $category);
+      $this->createOne(
+        Category::class,
+        function (Category $category) use ($specialCategory) {
+          $this->setCategoryData($category, $specialCategory, "special");
+        },
+        "special$key"
+      );
     }
-
 
     $manager->flush();
   }

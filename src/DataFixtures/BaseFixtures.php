@@ -25,12 +25,17 @@ abstract class BaseFixture extends Fixture
     protected function createMany(string $className, int $count, callable $factory)
     {
         for ($i = 0; $i < $count; $i++) {
-            $entity = new $className();
-            $factory($entity, $count);
-            $this->manager->persist($entity);
-            // store for usage later as App\Entity\ClassName_#COUNT#
-            $this->addReference($className . '_' . $i, $entity);
+            $this->createOne($className, $factory, $i);
         }
+    }
+
+    protected function createOne(string $className, callable $factory, string $referenceName)
+    {
+        $entity = new $className();
+        $factory($entity);
+        $this->manager->persist($entity);
+        // store for usage later as App\Entity\ClassName_#COUNT#
+        $this->addReference($className . '_' . $referenceName, $entity);
     }
 
     protected function getRandomReference(string $className)

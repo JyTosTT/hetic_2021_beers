@@ -24,7 +24,7 @@ class BeerFixtures extends BaseFixture implements DependentFixtureInterface
 
   public function loadData(ObjectManager $manager)
   {
-    $this->createMany(Beer::class, 20, function (Beer $beer, $count) {
+    $this->createMany(Beer::class, 20, function (Beer $beer) {
       $beer->setName($this->faker->randomElement(self::$beerNames));
 
       $beer->setDescription($this->faker->realText());
