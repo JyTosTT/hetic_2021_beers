@@ -11,7 +11,12 @@
     <ul>
       <li>{{ beer.name }}</li>
       <li>{{ beer.degree }}</li>
+
+      {% for category in beer.categories %}
+        <li>{{ category.name }}</li>
+      {% endfor %}
     </ul>
+
 
   </section>
 {% endblock %}
