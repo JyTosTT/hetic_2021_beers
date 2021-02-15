@@ -4,7 +4,41 @@
 
 {% block body %}
 
-  <section class="beer__focus">
+<div class="wrapper--product">
+
+  <!-- categorie-->
+  <div class="product__imageWrapper bg--blond">
+    
+    <div class="product__categoryBg">
+      <!-- Super categorie-->
+      <!--Boucle -->
+      <a href="#"class="bg--color bg--bio link--category">Bio</a>
+      <a href="#" class="bg--color bg--menthe link--category">Menthe</a>
+    </div>
+    <img class="product__image" src="https://upload.wikimedia.org/wikipedia/commons/0/04/Corona_Extra_beer_bottle_%282019%29.png"/>
+    <!-- categorie-->
+    <a href="#" class="product__category link--category">Blond</a>
+  </div>
+
+  <div class="product__main">
+    {# <button class="button__back">Back</button> #}
+    <div class="product__textBox textBox">
+
+      {% for category in beer.categories %}
+        <p>{{ category.name }}</p>
+      {% endfor %}
+
+      <h1 class="textBox__titel">{{ beer.name }}</h1>
+      <p class="textBox__country">{{ beer.country.name }}</p>
+      <p class="textBox__description">{{ beer.description }}</p>
+      <p class="textBox__prix">{{ beer.price }}$</p>
+      <p class="textBox__prix">{{ beer.degree }}°</p>    
+    </div>
+  </div>
+</div>
+
+
+  {# <section class="beer__focus">
 
     <p>Beer Focus :</p>
 
@@ -24,5 +58,5 @@
       {% endfor %}
     </ul>
 
-  </section>
+  </section> #}
 {% endblock %}
