@@ -18,7 +18,7 @@ class CategoryController extends AbstractController
     public function categoryFocus(int $id, CategoryRepository $categoryRepository): Response
     {
         return $this->render('category/index.html.twig', [
-            'beer' => $categoryRepository->find($id)
+            'category' => $categoryRepository->find($id)
         ]);
     }
 }
