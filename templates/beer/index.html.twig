@@ -23,8 +23,8 @@
         <ul>
             {% for beer in beers %}
                 <li>
-                    {# <a href="{{ path('beer', { 'id' : beer.id }) }}"> #}
-                    <a href="beer/{{beer.id}}">
+                     <a href="{{ path('beer:focus', { 'id' : beer.id }) }}">
+{#                    <a href="beer/{{beer.id}}">#}
                         {{ beer.name }}
                     </a>
                 </li>
