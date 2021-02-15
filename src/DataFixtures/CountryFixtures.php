@@ -12,6 +12,8 @@ class CountryFixtures extends BaseFixture
   {
     $this->createMany(Country::class, 8, function (Country $country, $count) {
       $country->setName($this->faker->country());
+      $country->setEmail($this->faker->email());
+      $country->setAddress($this->faker->address());
     });
 
     $manager->flush();
