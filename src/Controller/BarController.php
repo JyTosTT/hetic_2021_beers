@@ -12,14 +12,12 @@ class BarController extends AbstractController
 {
     /**
      * @Route("/menu", name="menu")
-     * @param string $category_id
-     * @param string $routeName
      * @param CategoryRepository $categoryRepository
      * @return Response
      */
-    public function mainMenu(string $category_id, string $routeName, CategoryRepository $categoryRepository): Response {
+    public function mainMenu(CategoryRepository $categoryRepository): Response {
         return $this->render('partials/mainMenu.html.twig', [
-            'categories' => $categoryRepository->findCategoriesByTerm('normal')
+            'categories' => $categoryRepository->findCategoriesByTerm()
         ]);
     }
 }
