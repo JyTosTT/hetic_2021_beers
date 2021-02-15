@@ -47,4 +47,14 @@ class BeerRepository extends ServiceEntityRepository
         ;
     }
     */
+
+    public function findBeersLimit(int $limit = 3)
+    {
+        return $this->createQueryBuilder('beer')
+            ->orderBy('beer.id', 'ASC')
+            ->setMaxResults($limit)
+            ->getQuery()
+            ->getResult()
+            ;
+    }
 }

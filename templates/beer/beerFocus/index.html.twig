@@ -1,0 +1,17 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello BeerController!{% endblock %}
+
+{% block body %}
+
+  <section class="beer__focus">
+
+    <p>Beer Focus :</p>
+
+    <ul>
+      <li>{{ beer.name }}</li>
+      <li>{{ beer.degree }}</li>
+    </ul>
+
+  </section>
+{% endblock %}
