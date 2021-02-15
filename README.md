@@ -17,6 +17,8 @@
     - ```npm install```
       
     - ```npm run dev-server```
+      
+    - ```symfony server:start```
   
 ### Lancer 
 

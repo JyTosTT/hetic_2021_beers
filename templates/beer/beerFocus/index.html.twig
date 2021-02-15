@@ -6,6 +6,21 @@
 
   <section class="beer__focus">
 
+    <hr>
+    Special :
+
+    {% for category in categoriesSpecials %}
+      <li>{{ category.name }}</li>
+    {% endfor %}
+
+    <hr>
+
+    {% for category in categoriesNormals %}
+      <li>{{ category.name }}</li>
+    {% endfor %}
+
+    <hr>
+
     <p>Beer Focus :</p>
 
     <ul>

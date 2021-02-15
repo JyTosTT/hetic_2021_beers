@@ -29,4 +29,19 @@ class CategoryRepository extends ServiceEntityRepository
             ->getResult()
             ;
     }
+
+    public function findCategoriesByTermAndBeer(int $id, string $type = 'normal')
+    {
+        return $this->createQueryBuilder('category')
+            ->join('category.beers', 'beers')
+            ->where('beers.id = :id')
+            ->andWhere('category.term = :term')
+            ->setParameters([
+                'id' => $id,
+                'term' => $type
+            ])
+            ->getQuery()
+            ->getResult()
+            ;
+    }
 }
