@@ -2,4 +2,12 @@
 {% set route_name = app.request.attributes.get('_route') %}
 <nav class="menu">
   Menu
+
+  <ul>
+    {% for category in categories %}
+      <li>{{ category.name }}</li>
+    {% endfor %}
+  </ul>
+
+
 </nav>
