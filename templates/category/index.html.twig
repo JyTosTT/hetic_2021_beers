@@ -1,0 +1,21 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}{{ category.name }}{% endblock %}
+
+{% block body %}
+
+  <section class="categories">
+    <h1>{{ category.name }}</h1>
+
+    {% for beer in category.beers %}
+      <li>
+        <a href="{{ path('beer:focus', { 'id' : beer.id }) }}">
+          {{ beer.name }}
+        </a>
+
+      </li>
+
+    {% endfor %}
+
+  </section>
+{% endblock %}

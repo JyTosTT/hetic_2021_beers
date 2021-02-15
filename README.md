@@ -7,14 +7,17 @@
 - Exécuter les commandes suivantes pour l'installation des bundles et charger les entités.
 
     - ```composer install```
-
-    - ```php bin/console make:migration```
-
+  
     - ```php bin/console doctrine:migrations:migrate```
 
     - ```php bin/console doctrine:fixtures:load```
 
-
+- Lancer pour le front et la compilation : 
+  
+    - ```npm install```
+      
+    - ```npm run dev-server```
+  
 ### Lancer 
 
 - Pour lancer votre projet : symfony server:start
