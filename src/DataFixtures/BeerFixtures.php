@@ -7,9 +7,12 @@ use Doctrine\Common\DataFixtures\DependentFixtureInterface;
 use App\Entity\Beer;
 use App\Entity\Category;
 use App\Entity\Country;
+use App\Repository\CategoryRepository;
 
 class BeerFixtures extends BaseFixture implements DependentFixtureInterface
 {
+  private $categoryRepository;
+
   private static $beerNames = [
     'beer super',
     'beer cool',
@@ -23,9 +26,17 @@ class BeerFixtures extends BaseFixture implements DependentFixtureInterface
     'beer very simple',
   ];
 
+  public function __construct(CategoryRepository $categoryRepository)
+  {
+    $this->categoryRepository = $categoryRepository;
+  }
+
   public function loadData(ObjectManager $manager)
   {
-    $this->createMany(Beer::class, 20, function (Beer $beer) {
+    $normal_categories = $this->categoryRepository->findCategoriesByTerm('normal');
+    $special_categories = $this->categoryRepository->findCategoriesByTerm('special');
+
+    $this->createMany(Beer::class, 20, function (Beer $beer) use ($normal_categories, $special_categories) {
       $beer->setName($this->faker->randomElement(self::$beerNames));
 
       $beer->setDescription($this->faker->realText());
@@ -39,7 +50,9 @@ class BeerFixtures extends BaseFixture implements DependentFixtureInterface
       $beer->setDegree($this->faker->randomFloat(1, 3.4, 10.7));
 
       // add a normal category
-      $beer->addCategory($this->getRandomReference(Category::class));
+      $beer->addCategory($this->faker->randomElement($normal_categories));
+      // add multiple special categories
+      $beer->addCategories($this->faker->randomElements($special_categories, random_int(1, 4)));
     });
 
     $manager->flush();
