@@ -129,6 +129,15 @@ class Beer
         return $this;
     }
 
+    public function addCategories(array $categories): self
+    {
+        foreach ($categories as $category) {
+            $this->addCategory($category);
+        }
+
+        return $this;
+    }
+
     public function removeCategory(Category $category): self
     {
         $this->categories->removeElement($category);

@@ -51,8 +51,8 @@ class BeerFixtures extends BaseFixture implements DependentFixtureInterface
 
       // add a normal category
       $beer->addCategory($this->faker->randomElement($normal_categories));
-      // add a special category
-      $beer->addCategory($this->faker->randomElement($special_categories));
+      // add multiple special categories
+      $beer->addCategories($this->faker->randomElements($special_categories, random_int(1, 4)));
     });
 
     $manager->flush();
