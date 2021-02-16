@@ -36,8 +36,18 @@
       </a>
       <p class="textBox__description">{{ beer.description }}</p>
       <p class="textBox__prix">{{ beer.price }}$</p>
-      <p class="textBox__prix">{{ beer.degree }}°</p>    
+      <p class="textBox__prix">{{ beer.degree }}°</p>
+
+      <hr>
+      Scores :
+      {% for statistic in beer.statistics %}
+        {{ statistic.score }} par
+        {{ statistic.client.email }} <br>
+      {% endfor %}
+
     </div>
+
+
   </div>
 </div>
 {% endblock %}
