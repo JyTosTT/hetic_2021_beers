@@ -5,7 +5,6 @@ namespace App\DataFixtures;
 use Doctrine\Persistence\ObjectManager;
 use Doctrine\Common\DataFixtures\DependentFixtureInterface;
 use App\Entity\Beer;
-use App\Entity\Category;
 use App\Entity\Country;
 use App\Repository\CategoryRepository;
 

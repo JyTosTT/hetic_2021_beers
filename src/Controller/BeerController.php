@@ -2,6 +2,8 @@
 
 namespace App\Controller;
 
+
+use App\Entity\Beer;
 use App\Repository\BeerRepository;
 use App\Repository\CategoryRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -24,17 +26,17 @@ class BeerController extends AbstractController
 
     /**
      * @Route("/beer/{id}", name="beer:focus")
-     * @param int $id
+     * @param Beer $beer
      * @param BeerRepository $beerRepository
      * @param CategoryRepository $categoryRepository
      * @return Response
      */
-    public function beerFocus(int $id, BeerRepository $beerRepository, CategoryRepository $categoryRepository): Response
+    public function beerFocus(Beer $beer, BeerRepository $beerRepository, CategoryRepository $categoryRepository): Response
     {
         return $this->render('beer/beerFocus/index.html.twig', [
-            'beer' => $beerRepository->find($id),
-            'categoriesSpecials' => $categoryRepository->findCategoriesByTermAndBeer($id, 'special'),
-            'categoriesNormals' => $categoryRepository->findCategoriesByTermAndBeer($id)
+            'beer' => $beer,
+            'categoriesSpecials' => $categoryRepository->findCategoriesByTermAndBeer($beer, 'special'),
+            'categoriesNormals' => $categoryRepository->findCategoriesByTermAndBeer($beer)
         ]);
     }
 }

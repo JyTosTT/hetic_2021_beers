@@ -2,6 +2,7 @@
 
 namespace App\Repository;
 
+use App\Entity\Beer;
 use App\Entity\Category;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Doctrine\Persistence\ManagerRegistry;
@@ -30,14 +31,14 @@ class CategoryRepository extends ServiceEntityRepository
             ;
     }
 
-    public function findCategoriesByTermAndBeer(int $id, string $type = 'normal')
+    public function findCategoriesByTermAndBeer(Beer $beer, string $type = 'normal')
     {
         return $this->createQueryBuilder('category')
             ->join('category.beers', 'beers')
             ->where('beers.id = :id')
             ->andWhere('category.term = :term')
             ->setParameters([
-                'id' => $id,
+                'id' => $beer,
                 'term' => $type
             ])
             ->getQuery()
