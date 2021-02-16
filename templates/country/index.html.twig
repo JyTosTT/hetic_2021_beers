@@ -3,16 +3,42 @@
 {% block title %}{{ country.name }}{% endblock %}
 
 {% block body %}
-  <div class="example-wrapper">
-    <h1>{{ country.name }}</h1>
 
-    {% for beer in country.beers %}
-      <li>
-        <a href="{{ path('beer:focus', { 'id' : beer.id }) }}">
-          {{ beer.name }}
-        </a>
-      </li>
-    {% endfor %}
+   <div class="wrapper wrapper--category">
+
+    <sidebar class="sidebar bg--blonde"> 
+      <h1 class="logo"><a href="{{ path('beer') }}">United Colors of Beers</a></h1>
+      {{ render(controller('App\\Controller\\BarController:mainMenu',)) }}
+    </sidebar>
+
+    <main class="">
+      <h2><a href="">Beers du Pay {{ country.name }}</a></h2>
+
+      <div class="wrapper__productPreview">
+         {% for beer in country.beers %}
+            <a class="productPreview" href="{{ path('beer:focus', { 'id' : beer.id }) }}">
+                <div class="productPreview__imageBox bg--blonde">
+                    <div class="productPreview__imageBox__bg">
+
+                        {% for category in beer.categories %}
+                            <div class="bg--color bg--{{ category.name }}"></div>
+                        {% endfor %}
+      
+                    
+                    </div>
+                    <img 
+                        src="https://upload.wikimedia.org/wikipedia/commons/0/04/Corona_Extra_beer_bottle_%282019%29.png"/>
+                </div>
+                <div class="productPreview__text">
+                <p>{{ beer.name }}</p>
+                </div>
+            </a>
+        {% endfor %}
+    </div>
+    </main>
+
+
+    
 
   </div>
 {% endblock %}

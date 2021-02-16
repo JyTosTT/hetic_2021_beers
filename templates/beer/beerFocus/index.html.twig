@@ -4,74 +4,40 @@
 
 {% block body %}
 
-<div class="wrapper--product">
+<div class="wrapper--product product">
 
   <!-- categorie-->
-  <div class="product__imageWrapper bg--blond">
+  <div class="product__imageWrapper bg--{% for category in categoriesNormals %}{{ category.name }}{% endfor %}">
     
     <div class="product__categoryBg">
       <!-- Super categorie-->
       <!--Boucle -->
-      <a href="#"class="bg--color bg--bio link--category">Bio</a>
-      <a href="#" class="bg--color bg--menthe link--category">Menthe</a>
+      {% for category in categoriesSpecials %}
+        <a href="{{ path('category:focus', { 'id' : category.id }) }}" class="bg--color bg--{{ category.name }} link--category">{{ category.name }}</a>
+      {% endfor %}
+
     </div>
     <img class="product__image" src="https://upload.wikimedia.org/wikipedia/commons/0/04/Corona_Extra_beer_bottle_%282019%29.png"/>
     <!-- categorie-->
-    <a href="#" class="product__category link--category">Blond</a>
+    {% for category in categoriesNormals %}
+      <a href="{{ path('category:focus', { 'id' : category.id }) }}" class="product__category link--category">{{ category.name }}</a>
+    {% endfor %}
   </div>
 
   <div class="product__main">
     {# <button class="button__back">Back</button> #}
+    <h1 class="logo"><a href="{{ path('beer') }}">United Colors of Beers</a></h1>
+
     <div class="product__textBox textBox">
 
-      {% for category in beer.categories %}
-        <p>{{ category.name }}</p>
-      {% endfor %}
-
       <h1 class="textBox__titel">{{ beer.name }}</h1>
-      <p class="textBox__country">{{ beer.country.name }}</p>
+      <a class="textBox__country" href="{{ path('country:focus', { 'id' : beer.country.id }) }}">
+        {{ beer.country.name }}
+      </a>
       <p class="textBox__description">{{ beer.description }}</p>
       <p class="textBox__prix">{{ beer.price }}$</p>
       <p class="textBox__prix">{{ beer.degree }}°</p>    
     </div>
   </div>
 </div>
-
-
-  {# <section class="beer__focus">
-
-    <hr>
-    Special :
-
-    {% for category in categoriesSpecials %}
-      <li>{{ category.name }}</li>
-    {% endfor %}
-
-    <hr>
-
-    {% for category in categoriesNormals %}
-      <li>{{ category.name }}</li>
-    {% endfor %}
-
-    <hr>
-
-    <p>Beer Focus :</p>
-
-    <ul>
-      <li>{{ beer.name }}</li>
-      <li>{{ beer.degree }}</li>
-
-      <a>{{ beer.degree }}</a>
-
-      <a href="{{ path('country:focus', { 'id' : beer.country.id }) }}">
-        {{ beer.country.name }}
-      </a>
-
-
-      {% for category in beer.categories %}
-        <li>{{ category.name }}</li>
-      {% endfor %}
-    </ul>
-
-  </section> #}
 {% endblock %}

@@ -2,76 +2,56 @@
 
 {% block title %}Welcome!{% endblock %}
 
+{% block logo %} 
+    <h1 class="logo"><a href="{{ path('beer') }}">United Colors of Beers</a></h1> 
+{% endblock %}
+
 {% block body %}
 
-    {# <section class="example-wrapper">
+    <div class="wrapper wrapper--home">
 
-        This friendly message is coming from:
-        <ul>
-            {% for beer in beers %}
-                <li>
-                     <a href="{{ path('beer:focus', { 'id' : beer.id }) }}">
-                        {{ beer.name }}
-                    </a>
-                </li>
-            {% endfor %}
-        </ul>
-    </section> #}
 
-    <div class="wrapper--home">
-        <div class="intro">
-        <div class="intro__headline">
-            <h1>United Colors of Beers</h1>
-            <p>Decouvris des beers du monde</p>
-            <nav>
-            <div class="nav__link bg--blond">Blond</div>
-            <div class="nav__link bg--brune">Brune</div>
-            <div class="nav__link bg--blanche">Blanche</div>
-            </nav>
-        </div>
-        
-        </div>
-        
-        <section class="filter--latest">
+        <sidebar class="sidebar bg--blonde"> 
+            <h1 class="logo">United Colors of Beers</h1>
+            {{ render(controller('App\\Controller\\BarController:mainMenu',)) }}
+        </sidebar>
+
+        <main>
+            <section class="intro">
+                <h1>United Colors of Beers</h1>
+                <p>Decouvrir des beers du monde</p>
+            </section>
+
+            <section class="filter--latest">
             <h2> Des nouveau beers :</h2> 
-        <div >
-        <div class="wrapper__product">
-            {% for beer in beers %}
-                <li >
-                <a class="product__preview" href="{{ path('beer:focus', { 'id' : beer.id }) }}">
-                    <div class="product__preview__image bg--blond">
-                    <div class="product__bg">
-                        <div class="bg--color bg--bio"></div>
-                        <div class="bg--color bg--menthe"></div>
-                    </div>
-                    <img class="product__image" src="https://upload.wikimedia.org/wikipedia/commons/0/04/Corona_Extra_beer_bottle_%282019%29.png"/>
-                    </div>
-                    <div class="product__preview__text">
-                    <p>{{ beer.name }}</p>
-                    </div>
-                </a>
-            {% endfor %}
-        </div>
+            <div >
+                <div class="wrapper__productPreview">
+                    {% for beer in beers %}
+                        <a class="productPreview" href="{{ path('beer:focus', { 'id' : beer.id }) }}">
+                            <div class="productPreview__imageBox bg--blonde">
+                                <div class="productPreview__imageBox__bg">
 
-        
-        <div class="product__preview">
-            <div class="product__preview__image bg--blond">
-            <div class="product__bg">
-                <div class="bg--color bg--bio"></div>
-                <div class="bg--color bg--menthe"></div>
+                                    {% for category in beer.categories %}
+                                        <div class="bg--color bg--{{ category.name }}"></div>
+                                    {% endfor %}
+                 
+                                
+                                </div>
+                                <img 
+                                    src="https://upload.wikimedia.org/wikipedia/commons/0/04/Corona_Extra_beer_bottle_%282019%29.png"/>
+                            </div>
+                            <div class="productPreview__text">
+                            <p>{{ beer.name }}</p>
+                            </div>
+                        </a>
+                    {% endfor %}
+                </div>
             </div>
-            <img class="product__image" src="https://upload.wikimedia.org/wikipedia/commons/0/04/Corona_Extra_beer_bottle_%282019%29.png"/>
-            </div>
-            <div class="product__preview__text">
-            <a href="#">Beer Name</a>
-            </div>
-        </div>
-        
-        </div>
-        </section>
+            </section>
+        </main>
         
         
 
-        </div>
+     </div>
 
 {% endblock %}
