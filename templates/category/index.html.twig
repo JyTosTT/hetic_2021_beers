@@ -7,39 +7,36 @@
   <div class="wrapper wrapper--category">
     {{ include('/partials/buttonstatistic.html.twig') }}
 
-    <sidebar class="sidebar bg--{{ category.name }}"> 
+    <sidebar class="sidebar bg--{{ category.name }}">
       {{ include('/partials/logo.html.twig') }}
       {{ render(controller('App\\Controller\\BarController:mainMenu',)) }}
     </sidebar>
 
     <main class="">
-      <h2><a href="">Beers du Category {{ category.name }}</a></h2>
+      <h2><a href="">Beers of the {{ category.name }} category</a></h2>
 
       <div class="wrapper__productPreview">
         {% for beer in category.beers %}
-            <a class="productPreview" href="{{ path('beer:focus', { 'id' : beer.id }) }}">
-                <div class="productPreview__imageBox bg--{{ category.name }}">
-                    <div class="productPreview__imageBox__bg">
+          <a class="productPreview" href="{{ path('beer:focus', { 'id' : beer.id }) }}">
+            <div class="productPreview__imageBox bg--{{ category.name }}">
+              <div class="productPreview__imageBox__bg">
 
-                        {% for category in beer.categories %}
-                            <div class="bg--color bg--{{ category.name }}"></div>
-                        {% endfor %}
-      
-      
-                    </div>
-                    <img 
-                        src="https://upload.wikimedia.org/wikipedia/commons/0/04/Corona_Extra_beer_bottle_%282019%29.png"/>
-                </div>
-                <div class="productPreview__text">
-                <p>{{ beer.name }}</p>
-                </div>
-            </a>
+                {% for category in beer.categories %}
+                  <div class="bg--color bg--{{ category.name }}"></div>
+                {% endfor %}
+
+              </div>
+              <img
+                  src="https://upload.wikimedia.org/wikipedia/commons/0/04/Corona_Extra_beer_bottle_%282019%29.png" alt="bottle"/>
+            </div>
+            <div class="productPreview__text">
+              <p>{{ beer.name }}</p>
+            </div>
+          </a>
         {% endfor %}
-    </div>
+      </div>
     </main>
 
-
-    
 
   </div>
 

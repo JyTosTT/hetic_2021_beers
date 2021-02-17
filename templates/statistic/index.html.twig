@@ -1,52 +1,53 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Hello StatisticController!{% endblock %}
+{% block title %}Statistics{% endblock %}
 
 {% block body %}
 
 
-<div class="wrapper wrapper--statistic">
+  <div class="wrapper wrapper--statistic">
 
     {{ include('/partials/buttonstatistic.html.twig') }}
 
-    <sidebar class="sidebar bg--rose"> 
+    <sidebar class="sidebar bg--rose">
       {{ include('/partials/logo.html.twig') }}
       {{ render(controller('App\\Controller\\BarController:mainMenu',)) }}
     </sidebar>
 
     <main class="">
-      <h2>Statistic</h2>
+      <h2>Statistics</h2>
       <div class="fact">
 
         <div class="fact__box">
-          <p class="fact__box__label">Nombre de clients</p>
+          <p class="fact__box__label">Customers number</p>
           <p class="fact__box__value">{{ clients|length }}</p>
         </div>
 
         <div class="fact__box">
-          <p class="fact__box__label">Moyenne</p>
+          <p class="fact__box__label">Average</p>
           <p class="fact__box__value">{{ clients|average }}</p>
         </div>
 
         <div class="fact__box">
-          <p class="fact__box__label">Ecart type</p>
+          <p class="fact__box__label">Standard deviation </p>
           <p class="fact__box__value">{{ clients|standardDeviation }}</p>
         </div>
       </div>
 
       <dl>
-      <dt><h3>Nombre des biers achete par client</h3></dt>
+        <dt><h3>Number of beers per Customer</h3></dt>
         {% for client in clients %}
-            <dd class="percentage percentage-{{ ((client.numberBeer)/4)|round(0, 'ceil') }}"><p class="text">{{ client.name }}: {{ client.numberBeer}}</p></dd>
+          <dd class="percentage percentage-{{ ((client.numberBeer)/4)|round(0, 'ceil') }}"><p
+                class="text">{{ client.name }}: {{ client.numberBeer }}</p></dd>
         {% endfor %}
       </dl>
 
-      <h3>Detailes des client</h3>
+      <h3>Customer details</h3>
       <table class="list list--detail">
         <tr>
           <th>Name</th>
           <th>Age</th>
-          <th>Nombres des bières achetés</th>
+          <th>Number of beers purchased</th>
         </tr>
         {% for client in clients %}
           <tr>
@@ -58,11 +59,11 @@
       </table>
 
       <dl>
-        <dt><h3>Beer par age</h3></dt>
+        <dt><h3>Beer per age</h3></dt>
 
         {% for key, averageAge in averageAgeReport %}
           <dd class="percentage percentage-{{ ((averageAge[1])/4)|round(0, 'ceil') }}">
-            <p class="value">{{averageAge[1]}}</p>
+            <p class="value">{{ averageAge[1] }}</p>
             <p class="text">{% if key is same as (0) %}
                 0 - 20
               {% elseif key is same as (1) %}
@@ -78,18 +79,8 @@
             <p></p>
           </dd>
         {% endfor %}
-
       </dl>
-
     </main>
-
-
-  
-
-  
-  <hr>
-
-
-
+    <hr>
   </div>
 {% endblock %}
