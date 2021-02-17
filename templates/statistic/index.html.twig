@@ -3,18 +3,16 @@
 {% block title %}Hello StatisticController!{% endblock %}
 
 {% block body %}
-<style>
-    .example-wrapper { margin: 1em auto; max-width: 800px; width: 95%; font: 18px/1.5 sans-serif; }
-    .example-wrapper code { background: #F5F5F5; padding: 2px 6px; }
-</style>
 
-<div class="example-wrapper">
-    <h1>Hello {{ controller_name }}! ✅</h1>
+<section class="statistic">
 
-    This friendly message is coming from:
-    <ul>
-        <li>Your controller at <code><a href="{{ '/home/jean/Documents/hetic/hetic_2021_beers/src/Controller/StatisticController.php'|file_link(0) }}">src/Controller/StatisticController.php</a></code></li>
-        <li>Your template at <code><a href="{{ '/home/jean/Documents/hetic/hetic_2021_beers/templates/statistic/index.html.twig'|file_link(0) }}">templates/statistic/index.html.twig</a></code></li>
-    </ul>
-</div>
+    {{ clients|length }}
+
+    {% for client in clients %}
+        name {{ client.email }}, age : {{ client.age }}, nombre de bière achetés : {{ client.numberBeer }}
+    {% endfor %}
+
+
+
+</section>
 {% endblock %}
