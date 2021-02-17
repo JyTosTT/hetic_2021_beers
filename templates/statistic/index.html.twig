@@ -12,7 +12,9 @@
         name {{ client.email }}, age : {{ client.age }}, nombre de bière achetés : {{ client.numberBeer }}
     {% endfor %}
 
+        <hr>
 
+        {{ clients|average }}
 
 </section>
 {% endblock %}
