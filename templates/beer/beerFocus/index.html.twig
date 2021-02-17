@@ -6,6 +6,8 @@
 
 <div class="wrapper--product product">
 
+  <button class="button--state"></button>
+
   <!-- categorie-->
   <div class="product__imageWrapper bg--{% for category in categoriesNormals %}{{ category.name }}{% endfor %}">
     
@@ -38,12 +40,18 @@
       <p class="textBox__prix">{{ beer.price }}$</p>
       <p class="textBox__prix">{{ beer.degree }}°</p>
 
-      <hr>
-      Scores :
-      {% for statistic in beer.statistics %}
-        {{ statistic.score }} par
-        {{ statistic.client.email }} <br>
-      {% endfor %}
+      <div class="score">
+        <hr>
+        {% for statistic in beer.statistics %}
+          <p class="score__line" >
+            <span class="score__line__number">{{ statistic.score }}</span>
+            bière acheté par
+            <a href="mailto:{{ statistic.client.email }}" class="score__line__mail"> Tom</a>
+            <span class="score__line__number">,56 ans</span>
+          </p>
+        {% endfor %}
+      </div>
+      
 
     </div>
 
