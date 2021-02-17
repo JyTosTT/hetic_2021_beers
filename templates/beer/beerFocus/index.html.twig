@@ -43,17 +43,19 @@
         <p class="textBox__prix">{{ beer.price }}$</p>
         <p class="textBox__prix">{{ beer.degree }}°</p>
 
-        <div class="score">
-          <hr>
-          {% for statistic in beer.statistics %}
-            <p class="score__line">
-              <span class="score__line__number">{{ statistic.score }}</span>
-              beer purchased by
-              <a href="mailto:{{ statistic.client.email }}" class="score__line__mail">{{ statistic.client.name }}</a>
-              <span class="score__line__number">,{{ statistic.client.age }} years</span>
-            </p>
-          {% endfor %}
-        </div>
+        {% if beer.statistics|length %}
+          <div class="score">
+            <h2>Scores</h2>
+            <hr>
+            {% for statistic in beer.statistics %}
+              <p class="score__line">
+                <span class="score__line__number">{{ statistic.score }}/100</span>
+                <a href="mailto:{{ statistic.client.email }}" class="score__line__mail">{{ statistic.client.name }}</a>
+                <span>,{{ statistic.client.age }} years</span>
+              </p>
+            {% endfor %}
+          </div>
+        {% endif %}
 
 
       </div>
