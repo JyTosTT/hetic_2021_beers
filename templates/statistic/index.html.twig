@@ -66,7 +66,7 @@
 
         {% for key, averageAge in averageAgeReport %}
           <dd class="percentage percentage-{{ ((averageAge[1])/4)|round(0, 'ceil') }}">
-            <p class="value">{{ averageAge[1] }}</p>
+            <p class="value">{{ averageAge[1]|number_format(2)  }}</p>
             <p class="text">{% if key is same as (0) %}
                 0 - 20
               {% elseif key is same as (1) %}
