@@ -5,7 +5,7 @@
 {% block body %}
 
     <div class="wrapper wrapper--home">
-        <a href="{{ path('statistic') }}" class="button--state"></a>
+        {{ include('/partials/buttonstatistic.html.twig') }}
 
         <sidebar class="sidebar bg--blonde">
             {{ include('/partials/logo.html.twig') }}

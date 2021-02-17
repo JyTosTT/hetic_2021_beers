@@ -22,7 +22,6 @@ img{
 }
 
 a{
-  text-decoration: none;
   font-weight: bold;
   color:#000;  
 }
@@ -113,19 +112,23 @@ a{
   position: fixed;
   bottom: 20px;
   right:20px;
-  width:40px;
-  height:40px;
-  border-radius: 50%;
+  text-decoration: none;
+  border-radius: 50vw;
   border:solid 1px black;
   background-color: #fff;
-  z-index: 5;
-  background-image: url('../imgages/state.svg');
-  background-size: 50%;
-  background-repeat: no-repeat;
-  background-position: center;
+  z-index: 7;
+  padding:0 20px;
+  display: flex;
+  align-items: center;
   transition: all 0.3s;
-  &:hover{
-    transform: scale(1.2);
+  .link__icon{
+    background-image: url('../imgages/state.svg');
+    background-size: 50%;
+    background-repeat: no-repeat;
+    background-position: center;
+    width:40px;
+    height:40px;
+    display: block;
   }
 }
 

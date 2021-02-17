@@ -4,21 +4,10 @@
 
 {% block body %}
 
-{# <section class="statistic">
 
-    Nombre de clients : {{ clients|length }}
-
-    {% for client in clients %}
-        name {{ client.name }}, age : {{ client.age }}, nombre de bière achetés : {{ client.numberBeer }}
-    {% endfor %}
-
-        <hr>
-
-        
-
-</section> #}
 <div class="wrapper wrapper--statistic">
-<a href="{{ path('statistic') }}" class="button--state"></a>
+
+    {{ include('/partials/buttonstatistic.html.twig') }}
 
     <sidebar class="sidebar bg--rose"> 
       {{ include('/partials/logo.html.twig') }}

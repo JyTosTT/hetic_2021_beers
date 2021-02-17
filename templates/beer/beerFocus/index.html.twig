@@ -6,7 +6,7 @@
 
 <div class="wrapper--product product">
 
-  <a href="{{ path('statistic') }}" class="button--state"></a>
+ {{ include('/partials/buttonstatistic.html.twig') }}
 
   <!-- categorie-->
   <div class="product__imageWrapper bg--{% for category in categoriesNormals %}{{ category.name }}{% endfor %}">
