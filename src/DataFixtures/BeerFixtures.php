@@ -8,7 +8,7 @@ use App\Entity\Beer;
 use App\Entity\Country;
 use App\Repository\CategoryRepository;
 
-class BeerFixtures extends BaseFixture implements DependentFixtureInterface
+class BeerFixtures extends BaseFixtures implements DependentFixtureInterface
 {
   private $categoryRepository;
 

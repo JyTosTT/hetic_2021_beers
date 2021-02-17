@@ -9,7 +9,7 @@ use App\Entity\Statistic;
 use App\Entity\Client;
 use App\Entity\Beer;
 
-class StatisticFixtures extends BaseFixture implements DependentFixtureInterface
+class StatisticFixtures extends BaseFixtures implements DependentFixtureInterface
 {
     public function loadData(ObjectManager $manager)
     {

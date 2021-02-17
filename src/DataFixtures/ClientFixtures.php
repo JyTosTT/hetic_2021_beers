@@ -6,7 +6,7 @@ use Doctrine\Persistence\ObjectManager;
 
 use App\Entity\Client;
 
-class ClientFixtures extends BaseFixture
+class ClientFixtures extends BaseFixtures
 {
     public function loadData(ObjectManager $manager)
     {
