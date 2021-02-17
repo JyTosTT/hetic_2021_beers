@@ -5,7 +5,7 @@ namespace App\DataFixtures;
 use Doctrine\Persistence\ObjectManager;
 use App\Entity\Country;
 
-class CountryFixtures extends BaseFixture
+class CountryFixtures extends BaseFixtures
 {
 
   public function loadData(ObjectManager $manager)

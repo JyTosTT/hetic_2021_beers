@@ -5,7 +5,7 @@ namespace App\DataFixtures;
 use Doctrine\Persistence\ObjectManager;
 use App\Entity\Category;
 
-class CategoryFixtures extends BaseFixture
+class CategoryFixtures extends BaseFixtures
 {
 
   private static $normalCategories = ['blonde', 'brune', 'blanche'];

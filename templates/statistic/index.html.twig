@@ -1,0 +1,21 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello StatisticController!{% endblock %}
+
+{% block body %}
+
+<section class="statistic">
+
+    Nombre de clients : {{ clients|length }}
+
+    {% for client in clients %}
+        name {{ client.name }}, age : {{ client.age }}, nombre de bière achetés : {{ client.numberBeer }}
+    {% endfor %}
+
+        <hr>
+
+        Moyenne : {{ clients|average }}
+        Ecart type : {{ clients|standardDeviation }}
+
+</section>
+{% endblock %}

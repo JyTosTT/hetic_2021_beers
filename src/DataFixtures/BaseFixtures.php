@@ -7,7 +7,7 @@ use Doctrine\Persistence\ObjectManager;
 
 use Faker\Factory;
 
-abstract class BaseFixture extends Fixture
+abstract class BaseFixtures extends Fixture
 {
     protected $faker;
     private $manager;
