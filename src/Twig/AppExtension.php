@@ -27,7 +27,6 @@ class AppExtension extends AbstractExtension
     public function getTotalBeersBought($clients): int
     {
         $numberBeer = 0;
-        // @TODO : make a sql request instead of looping through clients
         foreach ($clients as $client) {
             $numberBeer += $client->getNumberBeer();
         }
@@ -38,10 +37,10 @@ class AppExtension extends AbstractExtension
     public function standardDeviation($clients): float
     {
         $averageBeersBought = $this->getAverageBeersBought($clients);
+        $nbOfClients = count($clients);
         $sum = 0;
-        $nbOfClients = 0;
+
         foreach ($clients as $client) {
-            $nbOfClients++;
             $numberOfBeersBoughtByClient = $client->getNumberBeer();
             $sum += ($numberOfBeersBoughtByClient - $averageBeersBought) ** 2;
         }
