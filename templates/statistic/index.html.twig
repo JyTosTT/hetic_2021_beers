@@ -14,7 +14,8 @@
 
         <hr>
 
-        {{ clients|average }}
+        Moyenne : {{ clients|average.average }}
+        Ecart type : {{ clients|standardDeviation }}
 
 </section>
 {% endblock %}
