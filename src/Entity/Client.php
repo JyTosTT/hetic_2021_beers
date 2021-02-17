@@ -20,6 +20,11 @@ class Client
     private $id;
 
     /**
+     * @ORM\Column(type="string", length=100)
+     */
+    private $name;
+
+    /**
      * @ORM\Column(type="string", length=255)
      */
     private $email;
@@ -57,6 +62,18 @@ class Client
     public function setEmail(string $email): self
     {
         $this->email = $email;
+
+        return $this;
+    }
+
+    public function getName(): ?string
+    {
+        return $this->name;
+    }
+
+    public function setName(string $name): self
+    {
+        $this->name = $name;
 
         return $this;
     }
