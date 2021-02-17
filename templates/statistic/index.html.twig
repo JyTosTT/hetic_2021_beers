@@ -9,7 +9,7 @@
     {{ clients|length }}
 
     {% for client in clients %}
-        name {{ client.email }}, age : {{ client.age }}, nombre de bière achetés : {{ client.numberBeer }}
+        name {{ client.name }}, age : {{ client.age }}, nombre de bière achetés : {{ client.numberBeer }}
     {% endfor %}
 
         <hr>
