@@ -2,17 +2,13 @@
 
 {% block title %}Welcome!{% endblock %}
 
-{% block logo %} 
-    <h1 class="logo"><a href="{{ path('beer') }}">United Colors of Beers</a></h1> 
-{% endblock %}
-
 {% block body %}
 
     <div class="wrapper wrapper--home">
 
 
-        <sidebar class="sidebar bg--blonde"> 
-            <h1 class="logo">United Colors of Beers</h1>
+        <sidebar class="sidebar bg--blonde">
+            {{ include('/partials/logo.html.twig') }}
             {{ render(controller('App\\Controller\\BarController:mainMenu',)) }}
         </sidebar>
 
