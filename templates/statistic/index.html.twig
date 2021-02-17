@@ -6,7 +6,7 @@
 
 <section class="statistic">
 
-    {{ clients|length }}
+    Nombre de clients : {{ clients|length }}
 
     {% for client in clients %}
         name {{ client.name }}, age : {{ client.age }}, nombre de bière achetés : {{ client.numberBeer }}
@@ -14,7 +14,7 @@
 
         <hr>
 
-        Moyenne : {{ clients|average.average }}
+        Moyenne : {{ clients|average }}
         Ecart type : {{ clients|standardDeviation }}
 
 </section>

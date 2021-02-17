@@ -11,25 +11,23 @@ class AppExtension extends AbstractExtension
     public function getFilters(): array
     {
         return [
-            new TwigFilter('average', [$this, 'getAverageAndBeerTotal']),
+            new TwigFilter('average', [$this, 'getAverageBeersBought']),
             new TwigFilter('standardDeviation', [$this, 'standardDeviation']),
         ];
     }
 
-    public function getAverageAndBeerTotal($clients): array
+    public function getAverageBeersBought($clients): float
     {
-        $numberBeerTotal = $this->getNumberBeerTotal($clients);
-        return [
-            'beerTotal' => $numberBeerTotal,
-            'average' => round($numberBeerTotal / count($clients), 2)
+        $numberBeerTotal = $this->getTotalBeersBought($clients);
 
-        ];
+        return round($numberBeerTotal / count($clients), 2);
     }
 
 
-    public function getNumberBeerTotal($clients): int
+    public function getTotalBeersBought($clients): int
     {
         $numberBeer = 0;
+        // @TODO : make a sql request instead of looping through clients
         foreach ($clients as $client) {
             $numberBeer += $client->getNumberBeer();
         }
@@ -37,10 +35,17 @@ class AppExtension extends AbstractExtension
     }
 
 
-    public function standardDeviation($clients)
+    public function standardDeviation($clients): float
     {
-        $data = $this->getAverageAndBeerTotal($clients);
+        $averageBeersBought = $this->getAverageBeersBought($clients);
         $sum = 0;
-        return $data['beerTotal'];
+        $nbOfClients = 0;
+        foreach ($clients as $client) {
+            $nbOfClients++;
+            $numberOfBeersBoughtByClient = $client->getNumberBeer();
+            $sum += ($numberOfBeersBoughtByClient - $averageBeersBought) ** 2;
+        }
+
+        return round(sqrt($sum / $nbOfClients), 2);
     }
 }
