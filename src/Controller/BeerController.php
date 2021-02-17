@@ -20,7 +20,7 @@ class BeerController extends AbstractController
     public function index(BeerRepository $beerRepository): Response
     {
         return $this->render('beer/index.html.twig', [
-            'beers' => $beerRepository->findBeersLimit()
+            'beers' => $beerRepository->findBeersLimit(),
         ]);
     }
 

@@ -1,17 +1,20 @@
 
 {% set route_name = app.request.attributes.get('_route') %}
-<nav class="menu">
-  Menu
-
-  <ul>
+{# <nav class="menu">  
     {% for category in categories %}
-      <li>
-        <a href="{{ path('category:focus', { 'id' : category.id }) }}">
+   
+        <a 
+          href="{{ path('category:focus', { 'id' : category.id }) }}"
+          class="nav__link bg--{{ category.name }}">
           {{ category.name }}
         </a>
-      </li>
+    
     {% endfor %}
-  </ul>
+</nav> #}
 
 
+<nav class="menu">
+{% for category in categories %}
+    <a href="{{ path('category:focus', { 'id' : category.id }) }}" class="bg--color bg--{{ category.name }}">{{ category.name }}</a>
+{% endfor %}
 </nav>
