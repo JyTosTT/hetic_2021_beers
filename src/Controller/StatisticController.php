@@ -17,11 +17,12 @@ class StatisticController extends AbstractController
     public function index(ClientRepository $clientRepository): Response
     {
         $averageAgeReport = [
-            $clientRepository->findAverageScoreByRangeAge(0, 20),
-            $clientRepository->findAverageScoreByRangeAge(20, 40),
-            $clientRepository->findAverageScoreByRangeAge(40, 60),
-            $clientRepository->findAverageScoreByRangeAge(60, 80),
-            $clientRepository->findAverageScoreByRangeAge(80, 100),
+            $clientRepository->findAverageScoreByRangeAge(18, 28),
+            $clientRepository->findAverageScoreByRangeAge(28, 38),
+            $clientRepository->findAverageScoreByRangeAge(38, 48),
+            $clientRepository->findAverageScoreByRangeAge(48, 58),
+            $clientRepository->findAverageScoreByRangeAge(58, 68),
+            $clientRepository->findAverageScoreByRangeAge(68, 78),
         ];
 
         return $this->render('statistic/index.html.twig', [
