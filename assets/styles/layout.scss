@@ -107,3 +107,30 @@ a{
     flex-direction:column;
   }
 }
+
+
+.button--state{
+  position: fixed;
+  bottom: 20px;
+  right:20px;
+  width:40px;
+  height:40px;
+  border-radius: 50%;
+  border:solid 1px black;
+  background-color: #fff;
+  z-index: 5;
+  background-image: url('../imgages/state.svg');
+  background-size: 50%;
+  background-repeat: no-repeat;
+  background-position: center;
+  transition: all 0.3s;
+  &:hover{
+    transform: scale(1.2);
+  }
+}
+
+// .wrapper--statistic{
+//   .sidebar{
+//     position: sticky;
+//   }
+// }

@@ -1,17 +1,5 @@
 
 {% set route_name = app.request.attributes.get('_route') %}
-{# <nav class="menu">  
-    {% for category in categories %}
-   
-        <a 
-          href="{{ path('category:focus', { 'id' : category.id }) }}"
-          class="nav__link bg--{{ category.name }}">
-          {{ category.name }}
-        </a>
-    
-    {% endfor %}
-</nav> #}
-
 
 <nav class="menu">
 {% for category in categories %}

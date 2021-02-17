@@ -63,3 +63,31 @@
     }
   }
 }
+
+.link--category{
+  padding:20px;
+}
+
+.textBox__country{
+  text-decoration: underline;
+}
+
+
+.score{
+  hr{
+    margin-bottom: 10px;
+  }
+  p,span,h2,a{
+    font-size: clamp(17px, 1.5vw, 25px);
+  }
+  margin-top: 50px;
+  .score__line{
+    
+    .score__line__number{
+  
+    }
+    .score__line__mail{
+      text-decoration: underline;
+    }
+  }
+}

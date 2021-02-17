@@ -4,7 +4,7 @@
 
 {% block body %}
 
-<section class="statistic">
+{# <section class="statistic">
 
     Nombre de clients : {{ clients|length }}
 
@@ -14,8 +14,70 @@
 
         <hr>
 
-        Moyenne : {{ clients|average }}
-        Ecart type : {{ clients|standardDeviation }}
+        
 
-</section>
+</section> #}
+<div class="wrapper wrapper--statistic">
+<a href="{{ path('statistic') }}" class="button--state"></a>
+
+    <sidebar class="sidebar bg--rose"> 
+      {{ include('/partials/logo.html.twig') }}
+      {{ render(controller('App\\Controller\\BarController:mainMenu',)) }}
+    </sidebar>
+
+    <main class="">
+      <h2>Statistic</h2>
+      <div class="fact">
+
+        <div class="fact__box">
+          <p class="fact__box__label">Nombre de clients</p>
+          <p class="fact__box__value">{{ clients|length }}</p>
+        </div>
+
+        <div class="fact__box">
+          <p class="fact__box__label">Moyenne</p>
+          <p class="fact__box__value">{{ clients|average }}</p>
+        </div>
+
+        <div class="fact__box">
+          <p class="fact__box__label">Ecart type</p>
+          <p class="fact__box__value">{{ clients|standardDeviation }}</p>
+        </div>
+
+      </div>
+
+  
+
+      <dl>
+      <dt><h3>Nombre des biers achete par client</h3></dt>
+        {% for client in clients %}
+            <dd class="percentage percentage-{{ ((client.numberBeer)/4)|round }}"><p class="text">{{ client.name }}: {{ client.numberBeer}}</p></dd>
+        {% endfor %}
+      </dl>
+
+
+
+      
+      <h3>Detailes des client</h3>
+      <table class="list list--detail">
+        <tr>
+          <th>Name</th>
+          <th>Age</th>
+          <th>Nombres des bières achetés</th>
+        </tr>
+        {% for client in clients %}
+          <tr>
+            <td>{{ client.name }}</td>
+            <td> {{ client.age }}</td>
+            <td>{{ client.numberBeer }}</td>
+          </tr>
+        {% endfor %}
+      </table>
+
+    </main>
+
+
+    
+
+  </div>
 {% endblock %}
