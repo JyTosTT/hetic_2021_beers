@@ -1,15 +1,15 @@
 dl {
   display: flex;
   width: 100%;
-  height:auto;
+  height: auto;
   flex-direction: column;
   //height:50vh;
   position: relative;
-  margin:0;
+  margin: 0;
   margin-bottom: 100px;
 }
 
-dt{
+dt {
   font-weight: bold;
   font-size: 2vw;
 }
@@ -28,7 +28,7 @@ dt{
 }
 
 .percentage {
-  font-size: .8em;
+  font-size: 0.8em;
   line-height: 1;
   text-transform: uppercase;
   height: 40px;
@@ -37,19 +37,18 @@ dt{
   position: relative;
   background-color: #efefef;
   border-bottom: solid 0.5px #ddd;
-  p{
+  p {
     position: absolute;
-    top:0;
+    top: 0;
     z-index: 5;
     display: block;
-    width:100%;
+    width: 100%;
     font-size: 20px;
     margin-top: 11px;
     text-align: right;
     padding-right: 20px;
   }
 
-  
   &:after {
     content: "";
     display: block;
@@ -58,7 +57,7 @@ dt{
     height: 100%;
     position: absolute;
     bottom: 0;
-    transition: background-color .3s ease;
+    transition: background-color 0.3s ease;
     cursor: pointer;
   }
   &:hover,
@@ -69,7 +68,7 @@ dt{
   }
 }
 
-@for $i from 1 through 100 {
+@for $i from 0 through 100 {
   .percentage-#{$i} {
     &:after {
       $value: ($i * 1%);
@@ -78,45 +77,42 @@ dt{
   }
 }
 
-
-.fact{
+.fact {
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
   column-gap: 20px;
   margin-bottom: 50px;
-  
-  .fact__box{
+
+  .fact__box {
     background-color: #efefef;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    padding:30px 0px;
-    .fact__box__label{
+    padding: 30px 0px;
+    .fact__box__label {
       font-size: clamp(15px, 1.8vw, 18px);
       margin-bottom: 5px;
     }
-    .fact__box__value{
+    .fact__box__value {
       font-weight: bold;
     }
   }
 }
 
-.list--detail{
- 
-
-  width:100%;
-  th{
+.list--detail {
+  width: 100%;
+  th {
     text-align: left;
     margin-bottom: 5px;
   }
-  td{
+  td {
     background-color: #efefef;
-    padding:5px
+    padding: 5px;
   }
 }
 
-h3{
+h3 {
   //margin-bottom: 20px;
   font-size: clamp(20px, 2vw, 35px);
 }
