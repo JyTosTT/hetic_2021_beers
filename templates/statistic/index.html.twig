@@ -19,7 +19,7 @@
       <div class="fact">
 
         <div class="fact__box">
-          <p class="fact__box__label">Customers number</p>
+          <p class="fact__box__label">Number of clients</p>
           <p class="fact__box__value">{{ clients|length }}</p>
         </div>
 
@@ -29,20 +29,23 @@
         </div>
 
         <div class="fact__box">
-          <p class="fact__box__label">Standard deviation </p>
+          <p class="fact__box__label">Standard deviation</p>
           <p class="fact__box__value">{{ clients|standardDeviation }}</p>
         </div>
       </div>
 
       <dl>
-        <dt><h3>Number of beers per Customer</h3></dt>
+      <dt><h3>Number of beers purchased</h3></dt>
         {% for client in clients %}
           <dd class="percentage percentage-{{ ((client.numberBeer)/4)|round(0, 'ceil') }}"><p
                 class="text">{{ client.name }}: {{ client.numberBeer }}</p></dd>
         {% endfor %}
       </dl>
 
-      <h3>Customer details</h3>
+
+
+      
+      <h3>Details</h3>
       <table class="list list--detail">
         <tr>
           <th>Name</th>
@@ -81,6 +84,5 @@
         {% endfor %}
       </dl>
     </main>
-    <hr>
   </div>
 {% endblock %}

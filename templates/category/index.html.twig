@@ -13,7 +13,7 @@
     </sidebar>
 
     <main class="">
-      <h2><a href="">Beers of the {{ category.name }} category</a></h2>
+      <h2><a href="">"{{ category.name }}" category</a></h2>
 
       <div class="wrapper__productPreview">
         {% for beer in category.beers %}
@@ -36,8 +36,5 @@
         {% endfor %}
       </div>
     </main>
-
-
   </div>
-
 {% endblock %}
