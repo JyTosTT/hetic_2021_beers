@@ -1,53 +1,50 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Welcome!{% endblock %}
-
 {% block body %}
 
-    <div class="wrapper wrapper--home">
-        <a href="{{ path('statistic') }}" class="button--state"></a>
+  <div class="wrapper wrapper--home">
+    {{ include('/partials/buttonstatistic.html.twig') }}
 
-        <sidebar class="sidebar bg--blonde">
-            {{ include('/partials/logo.html.twig') }}
-            {{ render(controller('App\\Controller\\BarController:mainMenu',)) }}
-        </sidebar>
+    <sidebar class="sidebar bg--blonde">
+      {{ include('/partials/logo.html.twig') }}
+      {{ render(controller('App\\Controller\\BarController:mainMenu',)) }}
+    </sidebar>
 
-        <main>
-            <section class="intro">
-                <h1>United Colors of Beers</h1>
-                <p>Decouvrir des beers du monde</p>
-            </section>
+    <main>
+      <section class="intro">
+        <h1>United Colors of Beers</h1>
+        <p></p>
+      </section>
 
-            <section class="filter--latest">
-            <h2> Des nouveau beers :</h2> 
-            <div >
-                <div class="wrapper__productPreview">
-                    {% for beer in beers %}
-                        <a class="productPreview" href="{{ path('beer:focus', { 'id' : beer.id }) }}">
-                            <div class="productPreview__imageBox bg--blonde">
-                                <div class="productPreview__imageBox__bg">
+      <section class="filter--latest">
+        <h2>Discover beers from around the world :</h2>
+        <div>
+          <div class="wrapper__productPreview">
+            {% for beer in beers %}
+              <a class="productPreview" href="{{ path('beer:focus', { 'id' : beer.id }) }}">
+                <div class="productPreview__imageBox bg--blonde">
+                  <div class="productPreview__imageBox__bg">
 
-                                    {% for category in beer.categories %}
-                                        <div class="bg--color bg--{{ category.name }}"></div>
-                                    {% endfor %}
-                 
-                                
-                                </div>
-                                <img 
-                                    src="https://upload.wikimedia.org/wikipedia/commons/0/04/Corona_Extra_beer_bottle_%282019%29.png"/>
-                            </div>
-                            <div class="productPreview__text">
-                            <p>{{ beer.name }}</p>
-                            </div>
-                        </a>
+                    {% for category in beer.categories %}
+                      <div class="bg--color bg--{{ category.name }}"></div>
                     {% endfor %}
-                </div>
-            </div>
-            </section>
-        </main>
-        
-        
 
-     </div>
+
+                  </div>
+                  <img
+                      src="https://upload.wikimedia.org/wikipedia/commons/0/04/Corona_Extra_beer_bottle_%282019%29.png"/>
+                </div>
+                <div class="productPreview__text">
+                  <p>{{ beer.name }}</p>
+                </div>
+              </a>
+            {% endfor %}
+          </div>
+        </div>
+      </section>
+    </main>
+
+
+  </div>
 
 {% endblock %}

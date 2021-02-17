@@ -4,58 +4,63 @@
 
 {% block body %}
 
-<div class="wrapper--product product">
+  <div class="wrapper--product product">
 
-  <a href="{{ path('statistic') }}" class="button--state"></a>
+    {{ include('/partials/buttonstatistic.html.twig') }}
 
-  <!-- categorie-->
-  <div class="product__imageWrapper bg--{% for category in categoriesNormals %}{{ category.name }}{% endfor %}">
-    
-    <div class="product__categoryBg">
-      <!-- Super categorie-->
-      <!--Boucle -->
-      {% for category in categoriesSpecials %}
-        <a href="{{ path('category:focus', { 'id' : category.id }) }}" class="bg--color bg--{{ category.name }} link--category">{{ category.name }}</a>
-      {% endfor %}
-
-    </div>
-    <img class="product__image" src="https://upload.wikimedia.org/wikipedia/commons/0/04/Corona_Extra_beer_bottle_%282019%29.png"/>
     <!-- categorie-->
-    {% for category in categoriesNormals %}
-      <a href="{{ path('category:focus', { 'id' : category.id }) }}" class="product__category link--category">{{ category.name }}</a>
-    {% endfor %}
-  </div>
+    <div class="product__imageWrapper bg--{% for category in categoriesNormals %}{{ category.name }}{% endfor %}">
 
-  <div class="product__main">
-    {# <button class="button__back">Back</button> #}
-    {{ include('/partials/logo.html.twig') }}
-
-    <div class="product__textBox textBox">
-
-      <h1 class="textBox__titel">{{ beer.name }}</h1>
-      <a class="textBox__country" href="{{ path('country:focus', { 'id' : beer.country.id }) }}">
-        {{ beer.country.name }}
-      </a>
-      <p class="textBox__description">{{ beer.description }}</p>
-      <p class="textBox__prix">{{ beer.price }}$</p>
-      <p class="textBox__prix">{{ beer.degree }}°</p>
-
-      <div class="score">
-        <hr>
-        {% for statistic in beer.statistics %}
-          <p class="score__line" >
-            <span class="score__line__number">{{ statistic.score }}</span>
-            bière acheté par
-            <a href="mailto:{{ statistic.client.email }}" class="score__line__mail"> Tom</a>
-            <span class="score__line__number">,56 ans</span>
-          </p>
+      <div class="product__categoryBg">
+        <!-- Super categorie-->
+        <!--Boucle -->
+        {% for category in categoriesSpecials %}
+          <a href="{{ path('category:focus', { 'id' : category.id }) }}"
+             class="bg--color bg--{{ category.name }} link--category">{{ category.name }}</a>
         {% endfor %}
-      </div>
-      
 
+      </div>
+      <img class="product__image" alt="bottle"
+           src="https://upload.wikimedia.org/wikipedia/commons/0/04/Corona_Extra_beer_bottle_%282019%29.png"/>
+      <!-- categorie-->
+      {% for category in categoriesNormals %}
+        <a href="{{ path('category:focus', { 'id' : category.id }) }}"
+           class="product__category link--category">{{ category.name }}</a>
+      {% endfor %}
     </div>
 
+    <div class="product__main">
+      {# <button class="button__back">Back</button> #}
+      {{ include('/partials/logo.html.twig') }}
 
+      <div class="product__textBox textBox">
+
+        <h1 class="textBox__titel">{{ beer.name }}</h1>
+        <a class="textBox__country" href="{{ path('country:focus', { 'id' : beer.country.id }) }}">
+          {{ beer.country.name }}
+        </a>
+        <p class="textBox__description">{{ beer.description }}</p>
+        <p class="textBox__prix">{{ beer.price }}$</p>
+        <p class="textBox__prix">{{ beer.degree }}°</p>
+
+        {% if beer.statistics|length %}
+          <div class="score">
+            <h2>Scores</h2>
+            <hr>
+            {% for statistic in beer.statistics %}
+              <p class="score__line">
+                <span class="score__line__number">{{ statistic.score }}/100</span>
+                <a href="mailto:{{ statistic.client.email }}" class="score__line__mail">{{ statistic.client.name }}</a>
+                <span>,{{ statistic.client.age }} years</span>
+              </p>
+            {% endfor %}
+          </div>
+        {% endif %}
+
+
+      </div>
+
+
+    </div>
   </div>
-</div>
 {% endblock %}
