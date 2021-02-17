@@ -16,8 +16,17 @@ class StatisticController extends AbstractController
      */
     public function index(ClientRepository $clientRepository): Response
     {
+        $averageAgeReport = [
+            $clientRepository->findAverageScoreByRangeAge(0, 20),
+            $clientRepository->findAverageScoreByRangeAge(20, 40),
+            $clientRepository->findAverageScoreByRangeAge(40, 60),
+            $clientRepository->findAverageScoreByRangeAge(60, 80),
+            $clientRepository->findAverageScoreByRangeAge(80, 100),
+        ];
+
         return $this->render('statistic/index.html.twig', [
             'clients' => $clientRepository->findAllByOrder(),
+            'averageAgeReport' => $averageAgeReport,
         ]);
     }
 }

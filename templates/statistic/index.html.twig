@@ -32,10 +32,7 @@
           <p class="fact__box__label">Ecart type</p>
           <p class="fact__box__value">{{ clients|standardDeviation }}</p>
         </div>
-
       </div>
-
-  
 
       <dl>
       <dt><h3>Nombre des biers achete par client</h3></dt>
@@ -44,9 +41,6 @@
         {% endfor %}
       </dl>
 
-
-
-      
       <h3>Detailes des client</h3>
       <table class="list list--detail">
         <tr>
@@ -66,7 +60,28 @@
     </main>
 
 
-    
+  <hr>
+  {% for key, averageAge in averageAgeReport %}
+    {% if key is same as (0) %}
+      0 - 20
+    {% elseif key is same as (1) %}
+      20 - 40
+    {% elseif key is same as (2) %}
+      40 - 60
+    {% elseif key is same as (3) %}
+      60 - 80
+    {% elseif key is same as (4) %}
+      80 - 100
+    {% endif %}
+
+    {{ averageAge[1] }}
+
+    <br>
+    <br>
+  {% endfor %}
+  <hr>
+
+
 
   </div>
 {% endblock %}
